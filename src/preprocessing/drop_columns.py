@@ -50,8 +50,8 @@ def main():
     # Fields relevant to the assignment
     fields_of_interest = ["ID", "SecType", "Last", "Trading time", "Trading date"]
 
-    data_path = Path(f"{os.getcwd()}/test")
-    write_path = Path(f"{os.getcwd()}/test_clean")
+    data_path = Path(f"{os.getcwd()}/dataset")
+    write_path = Path(f"{os.getcwd()}/dataset_clean")
 
     # Loop over files in directory
     i = 0
