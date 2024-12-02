@@ -1,2 +1,6 @@
 /dataset
 /dataset_clean
+/test_clean
+/test
+
+*.csv
