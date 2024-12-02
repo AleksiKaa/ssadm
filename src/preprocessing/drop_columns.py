@@ -67,14 +67,18 @@ def main():
             # Skip header
             for _ in range(13):
                 csv_file.readline()
+            offset = csv_file.tell()
 
             # Write header
-            dest_file.write(",".join([f'"{c}"' for c in fields_of_interest]))
-            dest_file.write("\n")
+            dest_file.write(",".join(fields_of_interest) + "\n")
+
+            # Match format of files
+            dialect = csv.Sniffer().sniff(csv_file.read(1024))
+            csv_file.seek(offset)
 
             reader = csv.DictReader(csv_file, delimiter=",", fieldnames=field_names)
             writer = csv.DictWriter(
-                dest_file, fieldnames=fields_of_interest, dialect="unix"
+                dest_file, fieldnames=fields_of_interest, dialect=dialect
             )
 
             # Write relevant fields to new file
